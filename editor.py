@@ -54,7 +54,7 @@ def savejson(path, data):
     except Exception as e:
         print(f"檔案儲存失敗: {str(e)}")
         return
-    
+    '''
     # 同步到Firebase
     from firebase import update_firebase_from_json
     with open('firebase_config.json', encoding="utf-8") as f:
@@ -66,6 +66,7 @@ def savejson(path, data):
             )
         except Exception as e:
             print(f"Firebase同步失敗: {str(e)}")
+    '''
 
 #用二分搜尋法取得當前是第幾幀，輸入:(時間點陣列,時間點)
 def get_time_index(time_segments, current_time):
@@ -122,6 +123,7 @@ class MainWindow_controller(QtWidgets.QMainWindow):
         self.html.resize(930, 510)
         
         # 初始化 Firebase 監聽
+        '''
         from firebase import listen_to_firebase_and_update_json
         import json
         with open('firebase_config.json', encoding='utf-8') as f:
@@ -131,14 +133,15 @@ class MainWindow_controller(QtWidgets.QMainWindow):
             syncSettings['dataDir'],
             syncSettings['firebasePath']
         )
-        
+       
         # 設置定時刷新UI
         self.setup_firebase_listener()
-        
+
+         '''
         # 確保調用 setup_control 方法
         self.setup_control()
         self.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
-
+    '''
     def setup_firebase_listener(self):
         def async_reload():
             # 非同步重新載入資料並刷新界面
@@ -156,6 +159,8 @@ class MainWindow_controller(QtWidgets.QMainWindow):
             )
         
         self.async_reload = async_reload  # 暴露方法供firebase回調使用
+
+        '''
 #初始化
     def setup_control(self):
         #建立嵌入網頁視窗物件
