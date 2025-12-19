@@ -12,8 +12,8 @@ frames = data.get("frames", [])
 
 # 建立輸出資料夾
 output_dir = 'esp32_ino'
-WIFI_SSID="Ryan"
-WIFI_PASSWORD="11112222"
+WIFI_SSID="WegoRobotics"
+WIFI_PASSWORD="stu0123456789"
 
 
 
@@ -30,6 +30,7 @@ def create_ino_file(code_string, file_name, file_path):
     try:
         with open(full_path, 'w', encoding="utf-8") as file:
             file.write(code_string)
+            
         print(f"檔案已成功創建：{full_path}")
     except IOError as e:
         print(f"創建檔案時發生錯誤：{e}")
